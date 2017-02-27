@@ -2,19 +2,22 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+USING_NS_CC;
 
 class HelloWorld : public cocos2d::Layer
 {
 public:
     static cocos2d::Scene* createScene();
 
-    virtual bool init();
+     virtual bool init() override;
     
-    // a selector callback
-    void menuCloseCallback(cocos2d::Ref* pSender);
+    //其它函数省略
+    virtual void visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags) override;
     
-    // implement the "static create()" method manually
+    void onDraw();
     CREATE_FUNC(HelloWorld);
+private:
+    CustomCommand _command;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
